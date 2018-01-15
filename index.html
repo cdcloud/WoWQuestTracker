@@ -1,6 +1,4 @@
 <html>
-<style>
-</style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -10,43 +8,30 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<body>
+<div align="center"><br><br><br><br>
+    <input id='character' value="ydore" ></input>
+    <input id='realm' value="Thrall" ></input>
+    <button id="search">Click me</button>
+    <div id="my-demo"></div>
+</div>
 <script>
+    $("#search").click(function(){
+        var character = $("#character").val();
+        var realm = $("#realm").val();
 
-function myFunction() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("my-demo").innerHTML = this.responseText;
-        }
-    };
-    var character = $("#character").val();
-    var realm = $("#realm").val()
-    xhttp.open("GET", "https://4se9e0g010.execute-api.us-east-1.amazonaws.com/prod/getCompletedQuests?character="+character+"&realm="+realm, true);
-    xhttp.send();
-//     var character = $("#character").val();
-//     var realm = $("#realm").val()
-//     $.ajax({
-//         type: "GET",
-//         url: "https://4se9e0g010.execute-api.us-east-1.amazonaws.com/prod/getCompletedQuests",
-//         headers: {
-//             'Access-Control-Allow-Origin': '*'
-//         },
-//         crossDomain: true,
-//         contentType: 'application/json',
-//         // data: {character: character, realm: realm},
-//         success: function (data) {
-//             console.log(data)
-//             document.getElementById("my-demo").innerHTML = data;
-//         }
-//     });
-}
+        $.get({
+            url: "https://4se9e0g010.execute-api.us-east-1.amazonaws.com/prod/getCompletedQuests",
+            dataType: 'html',
+            data: {character: character, realm: realm},
+            statusCode: {
+                200: function (data) {
+                    $("#my-demo").append(data)
+                }
+            }
+        })
+    });
 
 </script>
-<body><div align="center"><br><br><br><br>
-<input id='character' value="Character Name" onfocus="this.value=''"></input>
-<input id='realm' value="Realm" onfocus="this.value=''"></input>
-<button onclick="myFunction()">Click me</button>
-<div id="my-demo"></div>
-</div>
 </body>
 </html>
