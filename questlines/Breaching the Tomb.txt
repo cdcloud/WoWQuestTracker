@@ -1,0 +1,5 @@
+Breaching the Tomb
+
+"1. Armies of Legionfall", "2. Assault on Broken Shore", "3. Seeking Lost Knowledge", "4. Legionfall Supplies", "5. Aalgen Point", "6. Vengeance Point", "7. Spiders, Huh? (Treasure chain)", "7a. Grave Robbin'", "7b. Tomb Raidering", "7c. Ship Graveyard", "7d. We're Treasure Hunters", "7e. The Motherlode", "8. Begin Construction", "8a. The Mage Tower", "8b. The Command Center", "8c. The Nether Disruptor", "9. Altar of the Aegis (Dungeon quest)", "13. Defending Broken Isles", "14. Champions of Legionfall", "15. Shard Times", "16. Mark of the Sentinax", "17. Self-Fulfilling Prophecy", "18. Intolerable Infestation", "19. Relieved of Their Valuables", "20. Take Out the Head...", "21. Championing Our Cause", "22. Strike Them Down"
+
+46730, 46734, 47067, 46286, 46832, 46845, 46499, 46501, 46509, 46510, 46511, 46666, 46245, 46772, 46773, 46774, 46244, 46247, 47137, 46251, 47139, 46248, 46252, 46769, 46250, 46249, 46246
