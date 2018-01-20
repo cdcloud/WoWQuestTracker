@@ -10,10 +10,10 @@
 
 <body>
 <div align="center"><br><br><br><br>
-    <input id='character' value="ydore" ></input>
-    <input id='realm' value="Thrall" ></input>
+    <input id='character' value="Character" ></input>
+    <input id='realm' value="Realm" ></input>
     <button id="search">Click me</button>
-    <div id="my-demo"></div>
+    <div id="tables"></div>
 </div>
 <script>
     $("#search").click(function(){
@@ -26,7 +26,16 @@
             data: {character: character, realm: realm},
             statusCode: {
                 200: function (data) {
-                    $("#my-demo").append(data)
+                    var html = '';
+                    $.each(JSON.parse(data), function(quest_line, quest_list){
+                        html += '<div class="col-lg-2 col-md-3 col-sm-6"><table class="table table-bordered">';
+                        html += '<tr><th colspan="2">' + quest_line + '</th></tr>'
+                        $.each(quest_list, function(qName, status){
+                           html += '<tr><td>' + qName + '</td><td>' + status + '</td></tr>';
+                        });
+                        html += '</table></div>';
+                    });
+                    $('#tables').html(html);
                 }
             }
         })

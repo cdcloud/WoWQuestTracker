@@ -75,26 +75,19 @@ def lambda_handler(event, context):
     already_ran = 0
 
     for quest_line, quests in quest_lines.items():
-        if already_ran == 0:
-            html_code = html_code + '<div class="col-lg-2 col-md-3 col-sm-6"><table class="table table-bordered">'
-            already_ran = 1
-        else:
-            html_code = html_code + '</table></div><div class="col-lg-2 col-md-3 col-sm-6"><table class="table table-bordered">'
-
-        html_code = html_code + f'<tr><th colspan="2">{quest_line}</th></tr>'
+        all_done[quest_line] = {}
         for quest_id in quests:
             if quest_id in body['quests']:
-                html_code = html_code + f'<tr><td>{quest_line_names[quest_line][quests.index(quest_id)]}</td><td>True</td></tr>'
+                all_done[quest_line][quest_line_names[quest_line][quests.index(quest_id)]] = True
             else:
-                html_code = html_code + f'<tr><td>{quest_line_names[quest_line][quests.index(quest_id)]}</td><td>False</td></tr>'
-    html_code = html_code + '</table></div>'
+                all_done[quest_line][quest_line_names[quest_line][quests.index(quest_id)]] = False
 
     resp = {
         "statusCode": 200,
         "headers": {
             "Access-Control-Allow-Origin": "*"
         },
-        "body": html_code
+        "body": json.dumps(all_done)
     }
 
     return resp
