@@ -109,3 +109,4 @@ urllib3*/
 *.zip
 
 .idea
+.DS_Store

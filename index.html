@@ -1,46 +1,38 @@
 <html>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/index.css">
 <body>
-<div align="center"><br><br><br><br>
-    <input id='character' value="Character" ></input>
-    <input id='realm' value="Realm" ></input>
-    <button id="search">Click me</button>
-    <div id="tables"></div>
+<div class="container">
+
+    <!-- FORM START -->
+    <div class="row">
+        <div id="form" class="dc-div-center col-lg-9 col-md-9 col-sm-9 col-xs-11">
+            <div id="character-group" class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <label class="sr-only" for="character">Character</label>
+                <input type="text" class="form-control" id="character" placeholder="Character"/>
+            </div>
+            <div id="realm-group" class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <label class="sr-only" for="realm">Realm</label>
+                <input type="text" class="form-control" id="realm" placeholder="Realm"/>
+            </div>
+            <button id="search" class="btn btn-success col-lg-12 col-md-12 col-sm-12 col-xs-12">Click me</button>
+        </div>
+    </div>
+    <!-- FORM END -->
+
+    <!-- TABLE CONTAINER START -->
+    <div id="table-container" class="row dc-div-center col-lg-9 col-md-9 col-sm-9 col-xs-11">
+        <div class="panel-group" id="panel-div">
+
+        </div>
+    </div>
+    <!-- TABLE CONTAINER END -->
 </div>
-<script>
-    $("#search").click(function(){
-        var character = $("#character").val();
-        var realm = $("#realm").val();
-
-        $.get({
-            url: "https://4se9e0g010.execute-api.us-east-1.amazonaws.com/prod/getCompletedQuests",
-            dataType: 'html',
-            data: {character: character, realm: realm},
-            statusCode: {
-                200: function (data) {
-                    var html = '';
-                    $.each(JSON.parse(data), function(quest_line, quest_list){
-                        html += '<div class="col-lg-2 col-md-3 col-sm-6"><table class="table table-bordered">';
-                        html += '<tr><th colspan="2">' + quest_line + '</th></tr>'
-                        $.each(quest_list, function(qName, status){
-                           html += '<tr><td>' + qName + '</td><td>' + status + '</td></tr>';
-                        });
-                        html += '</table></div>';
-                    });
-                    $('#tables').html(html);
-                }
-            }
-        })
-    });
-
-</script>
+<!-- jQuery library -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
