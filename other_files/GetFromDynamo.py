@@ -1,19 +1,23 @@
 import boto3
 import json
 
-dynamodb = boto3.resource('dynamodb')
+session = boto3.Session(profile_name='dclouddev')
 
-table = dynamodb.Table('wowquesttracker_questlines')
+dynamodb = session.resource('dynamodb')
+
+table = dynamodb.Table('wowquesttracker_questlinesv3')
 
 response = table.scan()
 
 quests = response['Items']
 
 # print(quests)
-
+#
 for quest in quests:
-    print(quest)
-    for thing,  in quest.items():
-        print(thing)
+    print(quest['quest_name'])
+    # print(quest['quest_data'][0])
+    # print(quest['quest_data'][1])
+    # print(quest['quest_data'][2])
+
 
 # print(response)

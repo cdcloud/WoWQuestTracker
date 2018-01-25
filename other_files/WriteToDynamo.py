@@ -1,8 +1,10 @@
 import boto3
 
-dynamodb = boto3.resource('dynamodb')
+session = boto3.Session(profile_name='dclouddev')
 
-table = dynamodb.Table('wowquesttracker_questlines')
+dynamodb = session.resource('dynamodb')
+
+table = dynamodb.Table('wowquesttracker_questlinesv4')
 
 quest_lines = {
     "Balance of Power": [43496, 40668, 43514, 43517, 43518, 43519, 43581, 43520, 43521, 43522, 43523, 40673, 43525,
@@ -99,16 +101,18 @@ quest_line_names = {
                            "20. Take Out the Head...", "21. Championing Our Cause", "22. Strike Them Down"]
 }
 
+
 for key, questline in quest_lines.items():
     for quest in questline:
         # print(quest)
         # print(quest_line_names[key][questline.index(quest)])
         # print(key)
-        # print()
+        # print(questline.index(quest))
         table.put_item(
             Item={
                 'quest_id': quest,
-                'quest_name': quest_line_names[key][questline.index(quest)],
-                'questline': key
+                'quest_data': [key, questline.index(quest), quest_line_names[key][questline.index(quest)]]
+                # 'quest_line': key,
+                # 'quest_order': questline.index(quest)
             }
         )
