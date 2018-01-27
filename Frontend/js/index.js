@@ -50,6 +50,6 @@ $(function () {
     }
 
     function generateQuestList(qName, status) {
-        return '<a href="#" class="list-group-item list-group-item-' + (status === "True" ? "success" : "danger") + '">' + qName + '</a>'
+        return '<a href="#" class="list-group-item list-group-item-' + (status === true ? "success" : "danger") + '">' + qName + '</a>'
     }
 });

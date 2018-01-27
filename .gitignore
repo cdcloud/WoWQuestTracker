@@ -106,6 +106,14 @@ chardet*/
 idna*/
 requests*/
 urllib3*/
+boto*/
+date*/
+doc*/
+jmes*/
+python_*/
+s3*/
+six*/
+six.py
 *.zip
 
 .idea
