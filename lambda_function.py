@@ -1,6 +1,7 @@
 import boto3
 import json
 import requests
+from boto3.dynamodb.conditions import Key, Attr
 
 
 def lambda_handler(event, context):
@@ -8,10 +9,6 @@ def lambda_handler(event, context):
     dynamodb = boto3.resource('dynamodb')
     # Connect to Table
     table = dynamodb.Table('wowquesttracker_questlinesv3')
-    # Scan entire Table for items
-    response = table.scan()
-    # Grab just the 'Items' from the data as its all we care about
-    quests = response['Items']
 
     # Set information for Blizzard API Call
     character = event["queryStringParameters"]['character']
@@ -20,7 +17,33 @@ def lambda_handler(event, context):
 
     # Make API Call to Blizzard for all Quests completed on NA Realms
     body = requests.get(
-        "https://us.api.battle.net/wow/character/" + realm + "/" + character + "?fields=quests&locale=en_US&apikey=" + apikey).json()
+        "https://us.api.battle.net/wow/character/" + realm + "/" + character + "?fields=quests&locale=en_US&apikey=" + apikey)
+
+    if body.status_code != 200:
+        # Form return response with Error code and response
+        resp = {
+            "statusCode": body.status_code,
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            "body": json.dumps(body.json())
+        }
+        return resp
+
+    # Jsonify the object
+    body = body.json()
+
+    # Set Character class
+    character_class = body['class']
+    # Set Character Faction
+    character_faction = body['faction']
+
+    # Scan entire Table for items
+    response = table.scan(
+        FilterExpression=Attr('faction').contains(character_faction) & Attr('class').contains(character_class)
+    )
+    # Grab just the 'Items' from the data as its all we care about
+    quests = response['Items']
 
     # Create empty Dict to store completed status in to be returned to the frontend
     all_done = {}
