@@ -1,32 +1,5 @@
-{
-	"bop": {
-		"The Power Within": 43496,
-		"The Heart of Zin-Azshari": 40668,
-		"A Vainglorious Past": 43514,
-		"Fallen Power": 43517,
-		"Tempering Darkness": 43518,
-		"Lucid Stregnth": 43519,
-		"The Wisdom of Patience": 43581,
-		"Into Nightmares": 43520,
-		"Essence of Power": 43521,
-		"Essential Consumption": 43522,
-		"Repaid Debt": 43523,
-		"Lost Knowledge": 40673,
-		"Borrowing Without Asking": 43525,
-		"Rite of the Captain": 40675,
-		"Literary Perfection": 43524,
-		"Twisted Power": 40678,
-		"A True Test": 43526,
-		"Seeking the Valkyra": 40603,
-		"The Mark": 40608,
-		"Retrieving the Svalnguard": 40613,
-		"A Feast for Odyn": 40614,
-		"Presentation is Key": 40672,
-		"Odyn's Blessing": 40615,
-		"Planning the Assault": 43528,
-		"Into the Nighthold": 43531,
-		"The Nighthold: Delusions of Grandeur": 43530,
-		"The Nighthold: Darkness Calls": 43532,
-		"Balance of Power": 43533
-	}
-}
+Balance of Power
+
+"The Power Within", "The Heart of Zin-Azshari", "A Vainglorious Past", "Fallen Power", "Tempering Darkness", "Lucid Stregnth", "The Wisdom of Patience", "Into Nightmares", "Essence of Power", "Essential Consumption", "Repaid Debt", "Lost Knowledge", "Borrowing Without Asking", "Rite of the Captain", "Literary Perfection", "Twisted Power", "A True Test", "Seeking the Valkyra", "The Mark", "Retrieving the Svalnguard", "A Feast for Odyn", "Presentation is Key", "Odyn's Blessing", "Planning the Assault", "Into the Nighthold", "The Nighthold: Delusions of Grandeur", "The Nighthold: Darkness Calls", "Balance of Power"
+
+43496, 40668, 43514, 43517, 43518, 43519, 43581, 43520, 43521, 43522, 43523, 40673, 43525, 40675, 43524, 40678, 43526, 40603, 40608, 40613, 40614, 40672, 40615, 43528, 43531, 43530, 43532, 43533

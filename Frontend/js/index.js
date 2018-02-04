@@ -28,6 +28,11 @@ $(function () {
                         });
                         questCount += 1;
                     });
+                },
+                404: function (data) {
+                    var reason = JSON.parse(data.responseText);
+                    var template = generateErrorMessage(reason['reason']);
+                    $('#panel-div').append(template)
                 }
             }
         })
@@ -51,5 +56,10 @@ $(function () {
 
     function generateQuestList(qName, status) {
         return '<a href="#" class="list-group-item list-group-item-' + (status === true ? "success" : "danger") + '">' + qName + '</a>'
+    }
+
+    function generateErrorMessage(message) {
+        return '<div class="alert alert-danger fade in"> \
+                    <strong>Error!</strong> ' + message + '</div>';
     }
 });
