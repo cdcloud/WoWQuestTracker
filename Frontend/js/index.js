@@ -4,6 +4,7 @@ $(function () {
      * search function
      */
     $("#search").click(function () {
+        $(".loading").show();
         var character = $("#character").val();
         var realm = $("#realm").val();
         $('#panel-div').empty();
@@ -15,7 +16,7 @@ $(function () {
             data: {character: character, realm: realm},
             statusCode: {
                 200: function (data) {
-
+                    $(".loading").hide();
                     var questCount = 0;
                     $.each(JSON.parse(data), function (quest_line, quest_list) {
                         var unique_quest_id = "quest" + questCount;
@@ -30,6 +31,7 @@ $(function () {
                     });
                 },
                 404: function (data) {
+                    $(".loading").hide();
                     var reason = JSON.parse(data.responseText);
                     var template = generateErrorMessage(reason['reason']);
                     $('#panel-div').append(template)
